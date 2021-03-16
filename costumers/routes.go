@@ -5,6 +5,6 @@ import (
 )
 
 func Route(app *fiber.App) {
-	app.Get("/costumers/:document_id?", GetAndListCostumer)
+	app.Get("/costumers/:document_id?", CostumersView.GetAndListView)
 	app.Post("/costumers/", CreateAndUpdateCostumer)
 }
