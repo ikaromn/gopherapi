@@ -37,6 +37,22 @@ func (v View) GetAndListView(ctx *fiber.Ctx) error {
 	return nil
 }
 
+func (v View) CreateView(ctx *fiber.Ctx) error {
+	db := settings.DbOpenConnection()
+	defer settings.DbCloseConnection(db)
+
+	model := reflect.TypeOf(v.model)
+	m := reflect.New(model).Interface()
+	if err := ctx.BodyParser(m); err != nil {
+		return err
+	}
+
+	db.Create(m)
+	ctx.JSON(m)
+
+	return nil
+}
+
 var costumer Costumer
 var costumers []Costumer
 
@@ -44,21 +60,4 @@ var CostumersView = View{
 	model:       costumer,
 	models:      costumers,
 	lookupField: "document_id",
-}
-
-func CreateAndUpdateCostumer(ctx *fiber.Ctx) error {
-	db := settings.DbOpenConnection()
-	defer settings.DbCloseConnection(db)
-
-	var costumer Costumer
-
-	if err := ctx.BodyParser(&costumer); err != nil {
-		return err
-	}
-
-	db.Create(&costumer)
-
-	ctx.JSON(costumer)
-
-	return nil
 }

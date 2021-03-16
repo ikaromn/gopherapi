@@ -24,5 +24,6 @@ var MyView = View{
 # routes.go
 
 app.Get("/my-view/:id?", MyView.GetAndListView)
+app.Post("/my-view/", MyView.CreateView)
 
 ```
