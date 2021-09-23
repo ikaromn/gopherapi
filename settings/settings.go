@@ -1,12 +1,14 @@
 package settings
 
 import (
+	"os"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 func DbOpenConnection() *gorm.DB {
-	dns_str := "postgresql://go_api:go_api@localhost:5432/go_api"
+	dns_str := os.Getenv("DB_DNS")
 	db, _ := gorm.Open(postgres.Open(dns_str), &gorm.Config{})
 	return db
 }

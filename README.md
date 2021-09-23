@@ -2,6 +2,11 @@
 A easy way to implements RESTful API views using Fiber and GORM
 
 ## Implementation:
+
+Set the enviroment variable to indicates the database:
+DB_DNS="postgresql://go_api:go_api@localhost:5432/go_api"
+
+
 ```
 # views.go
 
@@ -13,9 +18,9 @@ var myModels []MyModel
 
 
 var MyView = View{
-    model: myModel
-    models: []myModels
-    lookupField: "id"
+    model:       myModel,
+    models:      myModels,
+    lookupField: "id",
 }
 
 ```
