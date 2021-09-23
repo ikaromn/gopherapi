@@ -30,5 +30,6 @@ var MyView = View{
 
 app.Get("/my-view/:id?", MyView.GetAndListView)
 app.Post("/my-view/", MyView.CreateView)
+app.Patch("/my-view/", MyView.PartialUpdateView)
 
 ```
