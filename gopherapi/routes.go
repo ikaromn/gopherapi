@@ -1,4 +1,4 @@
-package costumers
+package gopherapi
 
 import (
 	"github.com/gofiber/fiber/v2"

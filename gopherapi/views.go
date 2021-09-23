@@ -1,4 +1,4 @@
-package costumers
+package gopherapi
 
 import (
 	"reflect"
